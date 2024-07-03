@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer sair comigo?</title>
+</head>
+<style>
+    body {
+        background-color: #09758d;
+        overflow: hidden;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button{
+        margin: 0 20px;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .img{
+        display: block;
+        background-image: url('https://gerarmemes.s3.us-east-2.amazonaws.com/memes/944c1a99.webp');
+        background-color: #fff;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 400px;
+        width: 400px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        transition: .3s all;
+        box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.8);
+    }
+</style>
+<body>
+    
+    <div class="center">
+        <div class="img"></div>
+    </div>
+    <div class="btn">
+        <button id="sim"><a href="https://www.youtube.com/watch?v=0DuWQ70UFKQ">Sim</a></button>
+        <button id="nao">Não</button>
+    </div>
+</body>
+<script>
+    const naoBtn = document.querySelector('#nao');
+    const simBtn = document.querySelector('#sim');
+    const img = document.querySelector('.img');
+
+    const changeImageOnSim = () => {
+        img.style.backgroundImage = "url('https://gerarmemes.s3.us-east-2.amazonaws.com/memes/73910475.webp')";
+    };
+    
+    const revertImageOnSim = () => {
+        img.style.backgroundImage = "url('https://gerarmemes.s3.us-east-2.amazonaws.com/memes/944c1a99.webp')";
+    };
+
+    const moveNaoBtn = () => {
+        const buttonWidth = naoBtn.offsetWidth;
+        const buttonHeight = naoBtn.offsetHeight;
+        const maxLeft = window.innerWidth - buttonWidth;
+        const minTop = window.innerHeight / 2;  // lower half
+        const maxTop = window.innerHeight - buttonHeight;
+        naoBtn.style.position = 'absolute';
+        naoBtn.style.left = Math.floor(Math.random() * maxLeft) + "px";
+        naoBtn.style.top = Math.floor(Math.random() * (maxTop - minTop) + minTop) + "px";
+    };
+
+    simBtn.addEventListener('mouseover', changeImageOnSim);
+    simBtn.addEventListener('mouseout', revertImageOnSim);
+    simBtn.addEventListener('touchstart', changeImageOnSim);
+    simBtn.addEventListener('touchend', revertImageOnSim);
+
+    naoBtn.addEventListener('mouseover', moveNaoBtn);
+    naoBtn.addEventListener('touchstart', moveNaoBtn);
+</script>
+</html>
